@@ -586,7 +586,13 @@
 					// When you can't scroll further left the left scroll hotspot should be hidden
 					// and the right hotspot visible.
 					else if (el.data("scrollWrapper").scrollLeft() === 0) {
-						el.data("scrollingHotSpotLeft").hide();
+						// show left scroll hotspot always when manualContinuousScrolling is enabled
+						if(o.manualContinuousScrolling){
+							el.data("scrollingHotSpotLeft").show();
+						}
+						else {
+							el.data("scrollingHotSpotLeft").hide();
+						}
 						el.data("scrollingHotSpotRight").show();
 						// Callback
 						self._trigger("scrollerLeftLimitReached");
